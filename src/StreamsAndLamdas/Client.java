@@ -1,7 +1,6 @@
 package StreamsAndLamdas;
 
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.function.*;
 
 public class Client {
     public static void main(String[] args) {
@@ -37,5 +36,27 @@ public class Client {
             System.out.println(X+" "+Y);
         };
         biConsumer1.accept("Hello",1);
+        BinaryOperator<Integer> binaryOperator = (X,Y) -> {
+            return X+Y;
+        };
+
+        System.out.println(binaryOperator.apply(1,2));
+        Predicate<String> predicate = x -> x.length()>10;
+//        {
+//            if(x.length()>10){
+//                return true;
+//            }return false;
+//        };
+
+
+
+
+        System.out.println(predicate.test("Hello"));
+        System.out.println(predicate.test("Hello World ,"));
+
+        BiPredicate<String, Integer> biPredicate = (str,x) -> str.length()>x;
+
+        System.out.println(biPredicate.test("Hello",1));
+        System.out.println(biPredicate.test("Hello",8));
     }
 }
